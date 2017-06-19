@@ -6,7 +6,7 @@ var src = './process',
     app = './builds/app';
 
 gulp.task('js', function() {
-  return gulp.src( src + '/js/app.js' )
+  return gulp.src( src + '/js/*.js' )
     .pipe(browserify({
       transform: 'reactify',
       debug: true
