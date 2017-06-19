@@ -1,15 +1,15 @@
 .urlHaze {
-	background: url("../images/haze.jpg");
+	background: url("../images/haze.jpg") bottom;
 	background-size: cover;
 }
 
 .urlClouds {
-	background: url("../images/clouds.jpg");
+	background: url("../images/clouds.jpg") center;
 	background-size: cover;
 }
 
 .urlClear {
-	background: url("../images/clear.jpg");
+	background: url("../images/clear.jpg") bottom;
 	background-size: cover;
 }
 

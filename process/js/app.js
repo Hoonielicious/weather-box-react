@@ -3,12 +3,13 @@ var ReactDOM = require('react-dom');
 var _ = require('lodash');
 
 var ForecastList = require('./ForecastList');
-
+var ForecastSearch = require('./ForecastSearch');
 
 var ForecastInterface = React.createClass({
 
 	getInitialState() {
 		return {
+			cityData: [],
 			forecastData: []
 		} //return
 	}, //getInitialStatus
@@ -16,6 +17,14 @@ var ForecastInterface = React.createClass({
 		var url = 'http://api.openweathermap.org/data/2.5/group?id=1835847,7839805,5946768,1277539&units=metric';
 
 		var apiKey= "005fa98ae858a29acf836ecdefac0411";
+
+		this.serverRequest = $.get('./js/city-list.json', function(result) {
+			var tempData = result
+			this.setState({
+				cityData: tempData
+			})
+			console.log(tempData[0].name);
+		}.bind(this));
 
 		this.serverRequest = $.get(url + '&appid=' + apiKey, function(result) {
 			var tempData = result.list;
@@ -48,7 +57,8 @@ var ForecastInterface = React.createClass({
 
 		return (
 			<div className="container">
-				<h1 className="pb-5">Today's Weather</h1>
+				<a className="navbar-brand pb-5">Today's Weather</a>
+				<ForecastSearch />
 					{filteredData}
 			</div>
 
